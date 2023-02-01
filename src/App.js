@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+// DATA
+import logo from "./assets/img/logo.jpeg";
+import data from "./assets/data/data.json";
+
+// Components
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div>
+      <header>
+        <img src={logo} alt="logo netflix" />
       </header>
+
+      {data.map((elem, index) => {
+        console.log(elem);
+        return (
+          <section key={index}>
+            <h2>{elem.category}</h2>
+
+            <div className="images-container">
+              {elem.images.map((image, num) => {
+                return <img key={num} src={image} alt="movie" />;
+              })}
+            </div>
+          </section>
+        );
+      })}
     </div>
   );
 }
